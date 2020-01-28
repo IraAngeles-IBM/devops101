@@ -1,0 +1,547 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Create a Custom Toolchain · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../Lab1/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">devops101 lab</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Lab0/">
+            
+                <a href="../Lab0/">
+            
+                    
+                    Setup and Pre-requisites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Lab1/">
+            
+                <a href="../Lab1/">
+            
+                    
+                    Create a Toolchain to Deploy a Kubernetes App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Create a Custom Toolchain
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Create a Custom Toolchain</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="toolchain-3---build-your-own-toolchain">Toolchain 3 - Build your own Toolchain</h1>
+<ol>
+<li><p>Create a Toolchain,</p>
+<ul>
+<li>Go to <a href="https://cloud.ibm.com/devops/toolchains" target="_blank">https://cloud.ibm.com/devops/toolchains</a></li>
+<li>Click the <code>Create a Toolchain</code>,</li>
+<li>Select the <code>Build your own toolchain</code> template,</li>
+</ul>
+</li>
+<li><p>Configure the Toolchain, for:</p>
+<ul>
+<li>Toolchain Name: <code>toolchain-custom-guestbook</code>,</li>
+<li>Region: <code>Washington DC</code></li>
+<li>Resource Group: <code>default</code></li>
+<li>Select a source provider: <code>Github</code>,</li>
+<li>Click the <code>Create</code> button, </li>
+</ul>
+</li>
+<li><p>Add Github to the Toolchain,</p>
+<ul>
+<li>Click the <code>Add a Tool</code> button,</li>
+<li>Browse for your source code repository tool, in this case select the <code>Github</code> tool,</li>
+<li><p>Click the <code>Authorize</code> button, select the appropriate authorizations, and click <code>Authorize IBM-Cloud</code> button,</p>
+<p><img src="../images/ibmcloud-devops-authorize-github.png" alt="Github Authorize IBM-Cloud"></p>
+</li>
+<li><p>Configure the Integration options,</p>
+<ul>
+<li>Select the GitHub server,</li>
+<li>Select the Repository Type, e.g. <code>Existing</code>,</li>
+<li>Select the Reporitory URL, e.g. <code>https://github.com/&lt;username&gt;/guestbook.git</code>,</li>
+<li>Check the <code>Enable Github Issues</code> option,</li>
+<li>Check the <code>Track deployment of code changes</code> option,</li>
+</ul>
+</li>
+<li>Click the <code>Create Integration</code> button,</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>Add a <code>Delivery Pipeline</code> to the Toolchain,<ul>
+<li>Click the <code>Add a Tool</code> button,</li>
+<li>Browse for and select <code>Delivery Pipeline</code>,</li>
+<li>Enter a <code>Pipeline name</code>, e.g. <code>guestbook-custom-delivery-pipeline</code>,</li>
+<li>Click the <code>Create Integration</code> button,</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>Add a Build stage to the <code>Delivery Pipeline</code>,<ul>
+<li>Click the <code>Delivery Pipeline</code> in the toolchain under <code>DELIVER</code>,</li>
+<li>Click <code>Add Stage</code></li>
+<li>Rename <code>MyStage</code> to <code>CLONE</code>,</li>
+<li>Configure the <code>Input</code> tab,<ul>
+<li>For  <code>Input Type</code> select <code>Git repository</code>,</li>
+<li>For <code>Git repository</code> select your repository, <a href="https://github.com/" target="_blank">https://github.com/</a><username>/guestbook.git</username></li>
+<li>Verify the <code>Git URL</code>,</li>
+<li>Select the correct <code>branch</code>, e.g. <code>master</code>,</li>
+<li>Set the <code>Stage Trigger</code> options, <ul>
+<li>Select <code>Run jobs automatically for Git events on the chosen branch</code>, and <code>When a commit is pushed</code>,</li>
+</ul>
+</li>
+<li>Check the option <code>Allow this stage to be run manually by all toolchain members</code>,</li>
+<li>and click the <code>Save</code> button,</li>
+</ul>
+</li>
+<li>Add a job by configuring the <code>Jobs</code> tab,<ul>
+<li>Click the <code>ADD JOB</code> icon, and select the <code>Build</code> option,</li>
+<li>The v2/guestbook is just a simple front-end application, consisting only of an HTML page with client-side Javascript code, so there is nothing to &apos;build&apos; in this case yet,</li>
+<li>For <code>Builder type</code> select <code>simple</code>,</li>
+<li>For <code>Pipeline image version</code> keep `Inherited from Configure Pipeline (1.0),</li>
+<li>Under <code>Run conditions</code> check the <code>Stop running this stage if this job fails</code> option,</li>
+<li>Click the <code>Save</code> button,</li>
+</ul>
+</li>
+<li>Click the <code>Run</code> button in the <code>CLONE</code> stage to test your build stage configuration,</li>
+<li>After the <code>STAGE PASSED</code> and the status bar turns green, click the link to <code>View logs and history</code>,</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>Add a Docker Build and Push stage to the <code>Delivery Pipeline</code>,</p>
+<ul>
+<li><p>Prepare, using the <a href="https://cloud.ibm.com/docs/cli?topic=containers-cli-plugin-kubernetes-service-cli" target="_blank">IBM Cloud Kubernetes Service plugin</a>:</p>
+<ol>
+<li><p>Find your cluster&apos;s zone,</p>
+<ul>
+<li><p>List all your clusters,</p>
+<pre><code class="lang-console">  ibmcloud ks clusters
+  OK
+  Name                ID                     State    Created      Workers   Location   Version       Resource Group Name   
+  my-cluster   abcdef1g2hijk3lmnopq   normal   4 days ago   1         Dallas     1.13.8_1529   default
+</code></pre>
+</li>
+<li><p>View the details of your cluster,</p>
+<pre><code class="lang-console">  $ ibmcloud ks cluster-get --cluster my-cluster
+  Retrieving cluster remkohdev-cluster...
+  OK
+
+  Name:                           my-cluster   
+  ID:                             abcdef1g2hijk3lmnopq   
+  State:                          normal   
+  Created:                        2019-07-18T18:13:33+0000   
+  Location:                       hou02   
+  Master URL:                     https://c5.dal12.containers.cloud.ibm.com:27008   
+  Public Service Endpoint URL:    https://c5.dal12.containers.cloud.ibm.com:27008   
+  Private Service Endpoint URL:   -   
+  Master Location:                Dallas  
+  ... and more
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Create a namespace in your registry,</p>
+<ul>
+<li><p>Using the <a href="https://cloud.ibm.com/docs/cli?topic=container-registry-cli-plugin-containerregcli" target="_blank">ibmcloud cli with container-registry plugin</a>,</p>
+<ul>
+<li><p>Login to the Container Registry,</p>
+<pre><code class="lang-console">  $ ibmcloud cr login
+  ...
+  Logging in to &apos;us.icr.io&apos;...
+  Logged in to &apos;us.icr.io&apos;.
+
+  OK
+</code></pre>
+</li>
+<li><p>Create a namespace <code>guestbook-ns</code>,</p>
+<pre><code class="lang-console">  $ ibmcloud cr namespace-add guestbook-ns
+  Adding namespace &apos;guestbook-ns&apos;...
+
+  Successfully added namespace &apos;guestbook-ns&apos;
+
+  OK
+</code></pre>
+</li>
+<li><p>Check that the namespace was created successfully,</p>
+<pre><code class="lang-console">  $ ibmcloud cr namespace-list
+  Listing namespaces for account &apos;USER ONE&apos;s Account&apos; in registry &apos;us.icr.io&apos;...
+
+  Namespace    
+  guestbook-ns   
+
+  OK
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Or using the Web UI,</p>
+<ul>
+<li>In the left menu, select <code>Registry</code>, select <code>Namespaces</code>,</li>
+<li>Click the <code>Create namespace</code> button,</li>
+<li>Enter a name under <code>Name</code> for your namespace: <code>guestbook-ns</code>, and click the <code>Create</code> button,</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Create an API Key,</p>
+<ul>
+<li>The API Key is used to authenticate and authorize a push of the Docker image to the Container Registry. You can use the <a href="https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud_commands_iam" target="_blank">IBM Cloud cli IAM feature</a> to manage IAM access, API keys, service IDs and access groups,</li>
+<li><p>Create an API Key,</p>
+<pre><code class="lang-console">  $ ibmcloud iam api-key-create ibm-cloud-container-registry-apikey -d &quot;API key to access IBM Cloud container registry&quot; --file ibm-cloud-container-registry-apikey.json
+  Creating API key ibm-cloud-container-registry-apikey as remkohdev@us.ibm.com...
+  OK
+  API key ibm-cloud-container-registry-apikey was created
+  Successfully save API key information to ibm-cloud-container-registry-apikey.json
+</code></pre>
+</li>
+<li><p>Open the downloaded file <code>ibm-cloud-container-registry-apikey.json</code>, </p>
+</li>
+<li>Copy the API Key, you need to paste it into the <code>API Key</code> control in the next step,</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Go to the <code>Delivery Pipeline</code> again, via the toolchain under <code>DELIVER</code>,</p>
+</li>
+<li>Click <code>Add Stage</code>,</li>
+<li><p>Rename <code>MyStage</code> to <code>DOCKER-BUILD-PUSH</code>,</p>
+</li>
+<li><p>Configure the <code>Input</code> tab,</p>
+<ul>
+<li>For  <code>Input Type</code> select <code>Git repository</code>,</li>
+<li>For <code>Git repository</code> select your repository, e.g. <code>https://github.com/&lt;username&gt;/guestbook.git</code>,</li>
+<li>Verify the <code>Git URL</code>,</li>
+<li>Select the correct <code>branch</code>, e.g. <code>master</code>,</li>
+<li>Set the <code>Stage Trigger</code> options, <ul>
+<li>Select <code>Run jobs automatically for Git events on the chosen branch</code>, and <code>When a commit is pushed</code>,</li>
+</ul>
+</li>
+<li>Check the option <code>Allow this stage to be run manually by all toolchain members</code>,</li>
+<li>and click the <code>Save</code> button,</li>
+</ul>
+</li>
+<li><p>Add a job by configuring the <code>Jobs</code> tab,</p>
+<ul>
+<li>Click the <code>ADD JOB</code> icon, and select the <code>Build</code> option,</li>
+<li>For <code>Builder type</code> select <code>Container Registry</code>,</li>
+<li>For <code>Pipeline image version</code> keep `Inherited from Configure Pipeline (latest),</li>
+<li>Paste the API key created in the Prepare step,<ul>
+<li>A popup window asks to input the API key,</li>
+<li>Paste the API key,</li>
+<li>Click the <code>Authenticate</code> button,</li>
+</ul>
+</li>
+<li>When authenticated, the controls for <code>IBM Cloud Region</code>, <code>Account Name</code>, and <code>Container Registry namespace</code> will populate,</li>
+<li>For <code>IBM Cloud Region</code> select your region, <ul>
+<li>e.g. for Dallas select <code>US South</code>, </li>
+<li>for Washington DC select <code>US East</code>,</li>
+</ul>
+</li>
+<li>For <code>Account Name</code> select your account,</li>
+<li>For <code>Container Registry namespace</code> select the namesapce created in the Prepare step, <code>guestbook-ns</code></li>
+<li>For <code>`Docker image name</code> enter a image name or tag, e.g. <code>guestbook-v2</code>,</li>
+<li>Review the script in the <code>Build script</code> control,</li>
+<li>Under <code>Run conditions</code> check the option <code>Stop running this stage if this job fails</code>,</li>
+</ul>
+</li>
+<li><p>Configure the <code>Environment properties</code> in the <code>Environment properties</code> tab,</p>
+<ul>
+<li>Add two new environment properties:<ul>
+<li>Click <code>Add property</code>, select <code>text property</code>,</li>
+<li>For <code>Name</code> enter <code>DOCKER_ROOT</code>,</li>
+<li>For <code>Value</code> enter <code>./v2/guestbook</code>,</li>
+<li>Click <code>Add property</code>, select <code>text property</code>,</li>
+<li>For <code>Name</code> enter <code>DOCKER_FILE</code>,</li>
+<li>For <code>Value</code> enter <code>Dockerfile</code>,</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Update the <code>Build script</code>,</p>
+<ul>
+<li><p>The current build script expects a default Dockerfile in the root directory, but our Dockerfile is in the <code>v2/guestbook</code> directory. Replace the current build script by this build script:</p>
+<pre><code class="lang-text">  #!/bin/bash
+  echo -e &quot;Build environment variables:&quot;
+  echo &quot;REGISTRY_URL=${REGISTRY_URL}&quot;
+  echo &quot;REGISTRY_NAMESPACE=${REGISTRY_NAMESPACE}&quot;
+  echo &quot;IMAGE_NAME=${IMAGE_NAME}&quot;
+  echo &quot;BUILD_NUMBER=${BUILD_NUMBER}&quot;
+  echo &quot;DOCKER_ROOT=${DOCKER_ROOT}&quot;
+  echo &quot;DOCKER_FILE=${DOCKER_FILE}&quot;
+
+  # Learn more about the available environment variables at:
+  # https://cloud.ibm.com/docs/services/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_environment#deliverypipeline_environment
+
+  # To review or change build options use:
+  # ibmcloud cr build --help
+
+  echo &quot;==========================================================&quot;
+  echo &quot;Checking for Dockerfile at the repository root&quot;
+  if [ -z &quot;${DOCKER_ROOT}&quot; ]; then DOCKER_ROOT=. ; fi
+  if [ -z &quot;${DOCKER_FILE}&quot; ]; then DOCKER_FILE=Dockerfile ; fi
+  if [ -f ${DOCKER_ROOT}/${DOCKER_FILE} ]; then 
+      echo -e &quot;Dockerfile found at: ${DOCKER_FILE}&quot;
+  else
+      echo &quot;Dockerfile not found at: ${DOCKER_FILE}&quot;
+      exit 1
+  fi
+  echo &quot;Linting Dockerfile&quot;
+  npm install -g dockerlint
+  dockerlint -f ${DOCKER_ROOT}/${DOCKER_FILE}
+
+  echo -e &quot;Building container image&quot;
+  set -x
+  ibmcloud cr build -t $REGISTRY_URL/$REGISTRY_NAMESPACE/$IMAGE_NAME:$BUILD_NUMBER -f $DOCKER_FILE $DOCKER_ROOT
+  set +x
+</code></pre>
+<ul>
+<li>See I added environment variables for $DOCKER_ROOT and $DOCKER_FILE, added a more expansive check to ensure the Dockerfile is found, and added the <code>--file</code> flag and custom <code>DIRECTORY</code> to the <code>ibmcloud cr build</code> command,</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Click the <code>Save</code> button,</p>
+</li>
+<li><p>Click the <code>Run</code> button in the <code>DOCKER-BUILD-PUSH</code> stage to test your build stage configuration,</p>
+</li>
+<li><p>Go to <a href="https://cloud.ibm.com/kubernetes/registry/main/images" target="_blank">https://cloud.ibm.com/kubernetes/registry/main/images</a> and make sure the image was pushed into our registry,</p>
+</li>
+<li><p>After the <code>STAGE PASSED</code> and the status bar turns green, click the link to <code>View logs and history</code>,</p>
+</li>
+</ul>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../Lab1/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Create a Toolchain to Deploy a Kubernetes App">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Create a Custom Toolchain","level":"1.4","depth":1,"previous":{"title":"Create a Toolchain to Deploy a Kubernetes App","level":"1.3","depth":1,"path":"Lab1/README.md","ref":"Lab1/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Lab3/README.md","mtime":"2020-01-28T09:01:50.157Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-28T09:17:04.977Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
