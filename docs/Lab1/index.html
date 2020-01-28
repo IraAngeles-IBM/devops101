@@ -1,0 +1,403 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Create a Toolchain to Deploy a Kubernetes App · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Lab2/" />
+    
+    
+    <link rel="prev" href="../Lab0/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">devops101 lab</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Lab0/">
+            
+                <a href="../Lab0/">
+            
+                    
+                    Setup and Pre-requisites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Create a Toolchain to Deploy a Kubernetes App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../Lab2/">
+            
+                <a href="../Lab2/">
+            
+                    
+                    Create a Custom Toolchain
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Create a Toolchain to Deploy a Kubernetes App</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="toolchain-1---deploy-a-kubernetes-app">Toolchain 1 - Deploy a Kubernetes App</h1>
+<ol>
+<li><p>Create a Toolchain,</p>
+<ul>
+<li>Go to <a href="https://cloud.ibm.com/devops/toolchains" target="_blank">https://cloud.ibm.com/devops/toolchains</a></li>
+<li>Click the <code>Create a Toolchain</code>,</li>
+<li>Select the <code>Develop a Kubernetes app</code> template,</li>
+</ul>
+</li>
+<li><p>Configure the Toolchain, for:</p>
+<ul>
+<li>Toolchain Name: <code>toolchain-kube-guestbook</code>,</li>
+<li>Region: <default></default></li>
+<li>Resource Group: <code>Default</code></li>
+<li>Configure your Source Provider: <code>Github</code>,<ul>
+<li>Github Server: <code>https://github.com</code>,</li>
+<li>Repository Type: <code>Existing</code></li>
+<li>Source repository URL: <code>https://github.com/&lt;username&gt;/guestbook</code>, you should be able to select the drop down and scroll to find your fork of the <code>guestbook</code> repo,</li>
+<li>Check <code>Enable GitHub Issues</code>,</li>
+<li>Check <code>Track deployment of code changes</code>,</li>
+</ul>
+</li>
+<li>Click <code>Create</code> button,</li>
+</ul>
+</li>
+<li><p>Configure the <code>Delivery Pipeline</code>:</p>
+<ul>
+<li>Define the following settings:<ul>
+<li>App name: <code>guestbook</code>,</li>
+<li>IBM Cloud API Key:<ul>
+<li>If you have an existing IBM Cloud API Key, copy-paste the API Key,</li>
+<li>If you do not have an existing IBM Cloud API Key,<ul>
+<li>Click the <code>Create</code> button to generate a new one,</li>
+<li>Or go to <code>Manage</code> &gt; <code>Access (IAM)</code> &gt; <code>IBM Cloud API Keys</code> to create a new IBM Cloud API Key,</li>
+<li>copy-paste the API Key,</li>
+<li>This should trigger the validation of the API Key, and if validated, should autoload the values for <code>Container registry region</code>, <code>Container registry namespace</code> or if no namespace exists enter <code>guestbook-ns</code> as the namespace, <code>Cluster region</code>, <code>Resource Group</code>, <code>Cluster name</code> or if more than one select the correct cluster, and <code>guestbook-ns</code> for <code>Cluster namespace</code>,</li>
+<li>Note that the <code>Cluster namespace</code> must be unique for us.icr.io</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Click the <code>Create</code> button,</p>
+</li>
+<li><p>The Toolchain is being configured,</p>
+</li>
+<li>When the Toolchain has successfully been configured, you will see the Tools in the Toolchain: THINK, CODE, DELIVER, and Eclipse Orion Web IDE,</li>
+<li>Click the top right drop down of the <code>kube-toolchain-123456...</code> and select <code>Rename</code>,</li>
+<li>Rename the toolchain name to <code>toolchain-kube-guestbook</code>,</li>
+<li>In the DELIVER tool window, click the top right dropdown and select <code>Configure</code>,</li>
+<li>Rename the <code>Pipeline name</code> to a meaningful name, e.g. <code>guestbook-delivery-pipeline</code>,</li>
+<li>Click <code>Save Integration</code>,</li>
+<li>Go back to the <code>Overview</code> page,</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>Review and Debug the Toolchain Configuration,</p>
+<ul>
+<li>The <code>THINK</code> window should link to your Issues manager,</li>
+<li>The <code>CODE</code> window should link to your source code repository,</li>
+<li>The <code>Eclipse Orion Web IDE</code> should link to an online Eclipse code editor,</li>
+<li><p>Click the <code>DELIVER</code> window to review the <code>Delivery Pipeline</code>,</p>
+<ul>
+<li>The <code>Delivery Pipeline</code> page will load,</li>
+<li>Click the <code>BUILD</code> stage,<ul>
+<li>The initial <code>BUILD</code> stage passes,</li>
+<li>In the <code>JOBS</code> section, click the <code>View logs and history</code> link,</li>
+<li>The <code>BUILD</code> stage fetched the source code and tried running the unit tests. The test runner script was not found but the tests did not result in failed tests. (Note: this should fail however)</li>
+<li>Return to the <code>guestbook-delivery-pipeline</code>,</li>
+</ul>
+</li>
+<li><p>The <code>CONTAINERIZE</code> stage failed,</p>
+<ul>
+<li>In the <code>JOBS</code> section, click the <code>View logs and history</code> link,</li>
+<li>Review the build logs, and note that the <code>Dockerfile</code> was not found,</li>
+<li><p>Also in the build logs, note the environment variables that were configured</p>
+<pre><code>  DOCKER_ROOT=.
+  DOCKER_FILE=Dockerfile
+  build.properties:
+  GIT_URL=https://github.com/&lt;username&gt;/guestbook.git
+  GIT_BRANCH=master
+  GIT_COMMIT=5246a420041424130f32d292cca7fc7a99aa0b93
+  SOURCE_BUILD_NUMBER=1
+</code></pre></li>
+<li><p>The Dockerfile for the guestbook application is located in the <code>v1/guestbook</code> and <code>v2/guestbook</code> subdirectories, so the reference needs to be set to include the relative path,</p>
+</li>
+<li>Go back to the <code>Delivery Pipeline</code> page, in the <code>CONTAINERIZE</code> window, from the settings drop down, click the <code>Configure Stage</code> icon,</li>
+<li>In the <code>Jobs</code> tab, note there are 4 jobs belonging to the stage, each job corresponds to a step in the <code>Build logs</code>,</li>
+<li>Review the <code>Check dockerfile</code> job. Note that this is essentially a Bash script that runs the script located at <code>https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/check_dockerfile.sh</code>,</li>
+<li>If you review the bash script, it sets the <code>DOCKER_ROOT</code> environment variable to the current directory if not set, and this is the reason that our Dockerfile is not found, </li>
+<li>Go to the <code>Environment properties</code> tab of the <code>CONTAINERIZE</code> stage, </li>
+<li>Change the <code>DOCKER_ROOT</code> property to <code>./v2/guestbook</code>,</li>
+<li><p>Click <code>SAVE</code></p>
+</li>
+<li><p>Manually trigger the <code>CONTAINERIZE</code> stage again by clicking the <code>Play</code> icon,</p>
+</li>
+<li>The <code>Check dockerfile</code> job in the <code>CONTAINERIZE</code> stage should pass now,</li>
+<li>If any of the next jobs fails, review the <code>View logs and history</code> link, and select the failed job, to debug,</li>
+<li>Go to <a href="https://cloud.ibm.com/kubernetes/clusters" target="_blank">https://cloud.ibm.com/kubernetes/clusters</a>, go to <code>Registry</code> and <code>Images</code>,</li>
+<li>You should see now that your <code>guestbook</code> image added to your registry under the <code>guestbook-ns</code> namespace,</li>
+</ul>
+</li>
+<li><p>Review the <code>DEPLOY</code> stage,</p>
+<ul>
+<li>You see that the stage failed for the <code>Deploy to Kubernetes</code> job,</li>
+<li>Review the <code>View logs and history</code> link,</li>
+<li>The <code>VALIDATE</code> failed because <code>Kubernetes deployment file &apos;deployment.yml&apos; not found</code>,</li>
+<li>This problem is caused because the current version of the <a href="https://github.com/open-toolchain/commons" target="_blank">Open Toolchain commons</a> that uses a <code>check and deploy</code> script, does not support deployment files being located in a subdirectory. </li>
+<li>You can fix the failure by making changes to the bash script being run to deploy the application,<ul>
+<li>The current fix for the failure is under review as Pull Request 35, <a href="https://github.com/open-toolchain/commons/pull/35" target="_blank">https://github.com/open-toolchain/commons/pull/35</a> in the open-toolchain/commons repository,</li>
+<li>Copy the code in <a href="https://raw.githubusercontent.com/open-toolchain/commons/6c3bbd582e04d2bdcf8923692c9e995700966c5a/scripts/check_and_deploy_kubectl.sh" target="_blank">https://raw.githubusercontent.com/open-toolchain/commons/6c3bbd582e04d2bdcf8923692c9e995700966c5a/scripts/check_and_deploy_kubectl.sh</a></li>
+<li>In the Delivery Pipeline page, in the <code>DEPLOY</code> stage, click the <code>Configure stage</code> icon,</li>
+<li>In the Jobs tab, scroll down to the <code>Deploy script</code></li>
+<li>Remove the current code and paste the copied code from the PR35 file,</li>
+<li>Scroll up again and go to the <code>Environment properties</code> tab,</li>
+<li>Add a new property <code>DEPLOYMENT_SUBDIRECTORY</code> with value <code>v2/</code>,</li>
+<li>Change value for property <code>DEPLOYMENT_FILE</code> to <code>guestbook-deployment.yaml</code>,</li>
+</ul>
+</li>
+<li>Click <code>Save</code>,</li>
+<li>Run the <code>DEPLOY</code> stage again by clicking the play icon,</li>
+<li>Your deployment to Kubernetes of the deployment resource should succeed,</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Check your Kubernetes cluster, in the <code>guestbook-ns</code> namespace, you should see your deployment running, </p>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../Lab0/" class="navigation navigation-prev " aria-label="Previous page: Setup and Pre-requisites">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Lab2/" class="navigation navigation-next " aria-label="Next page: Create a Custom Toolchain">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Create a Toolchain to Deploy a Kubernetes App","level":"1.3","depth":1,"next":{"title":"Create a Custom Toolchain","level":"1.4","depth":1,"path":"Lab2/README.md","ref":"Lab2/README.md","articles":[]},"previous":{"title":"Setup and Pre-requisites","level":"1.2","depth":1,"path":"Lab0/README.md","ref":"Lab0/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Lab1/README.md","mtime":"2020-01-28T09:01:50.157Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-28T09:13:16.853Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

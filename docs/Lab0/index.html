@@ -1,0 +1,358 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Setup and Pre-requisites · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Lab1/" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">devops101 lab</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Setup and Pre-requisites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Lab1/">
+            
+                <a href="../Lab1/">
+            
+                    
+                    Create a Toolchain to Deploy a Kubernetes App
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../Lab2/">
+            
+                <a href="../Lab2/">
+            
+                    
+                    Create a Custom Toolchain
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Setup and Pre-requisites</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="lab0---setup">Lab0 - Setup</h1>
+<h2 id="pre-requisites">Pre-requisites:</h2>
+<ol>
+<li>An instance of IBM Cloud Kubernetes Service (IKS),</li>
+<li>An instance of IBM Cloud Container Registry, </li>
+<li><p>A fork of the IBM Guestbook application,</p>
+<ul>
+<li>Go to <a href="https://github.com/IBM/guestbook" target="_blank">https://github.com/IBM/guestbook</a>,</li>
+<li>Create a fork to your own Github repo,</li>
+<li><p>[Optional] Clone the code to your localhost,</p>
+<pre><code class="lang-console">$ git clone https://github.com:&lt;username&gt;/guestbook.git
+Cloning into &apos;guestbook&apos;...
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Install the <a href="https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started" target="_blank">IBM Cloud Developer Tools CLI</a> on your localhost,</p>
+<pre><code class="lang-console"> $ curl -sL https://ibm.biz/idt-installer | bash
+</code></pre>
+<ul>
+<li>This command will install the latest stand-alone <code>IBM Cloud CLI</code> plus the following tools:<ul>
+<li>Homebrew (Mac only),</li>
+<li>Git,</li>
+<li>Docker,</li>
+<li>Helm,</li>
+<li>kubectl,</li>
+<li>curl,</li>
+<li>IBM Cloud Developer Tools plug-in  (<code>ibmcloud dev</code>)</li>
+<li>IBM Cloud Functions plug-in</li>
+<li>IBM Cloud Object Storage plug-in</li>
+<li>IBM Cloud Container Registry plug-in (<code>ibmcloud cr</code>)</li>
+<li>IBM Cloud Kubernetes Service plug-in (<code>ibmcloud ks</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="access-the-ibm-cloud-and-iks-from-your-client">Access the IBM Cloud and IKS from your Client</h2>
+<ol>
+<li><p>Login to your IBM Cloud account,</p>
+<p> ```console
+ $ ibmcloud login
+ API endpoint: <a href="https://cloud.ibm.com" target="_blank">https://cloud.ibm.com</a>
+ Region: us-south</p>
+<p> Email&gt; userone@email.com</p>
+<p> Password&gt; 
+ Authenticating...
+ OK</p>
+<p> Select an account:</p>
+<ol>
+<li>USER ONE&apos;s Account (1ab2c3de456789fg01h23i4j5k6l78mn) &lt;-&gt; 1234567
+Enter a number&gt; 1
+Targeted account USER ONE&apos;s Account (1ab2c3de456789fg01h23i4j5k6l78mn) &lt;-&gt; 1234567</li>
+</ol>
+</li>
+</ol>
+<pre><code>API endpoint:      https://cloud.ibm.com   
+Region:            us-south   
+User:              userone@email.com   
+Account:           USER ONE&apos;s Account (1ab2c3de456789fg01h23i4j5k6l78mn) &lt;-&gt; 1234567   
+Resource group:    No resource group targeted, use &apos;ibmcloud target -g RESOURCE_GROUP&apos;   
+CF API endpoint:      
+Org:                  
+Space:          
+```
+</code></pre><ol>
+<li><p>Assign a <a href="https://cloud.ibm.com/docs/resources?topic=resources-rgs" target="_blank">Resource Group</a>,</p>
+<ul>
+<li>If you don&apos;t have a custom resource group, then use the <code>default</code>,</li>
+</ul>
+<pre><code class="lang-console">$ ibmcloud target --cf
+Targeted Cloud Foundry (https://api.ng.bluemix.net)
+
+Targeted org 1234567
+
+Targeted space dev
+
+API endpoint:      https://cloud.ibm.com   
+Region:            us-south   
+User:              userone@email.com   
+Account:           USER ONE&apos;s Account (1ab2c3de456789fg01h23i4j5k6l78mn) &lt;-&gt; 1234567  
+Resource group:    Default   
+CF API endpoint:   https://api.ng.bluemix.net (API version: 2.128.0)   
+Org:               1234567   
+Space:             dev
+</code></pre>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Lab1/" class="navigation navigation-next " aria-label="Next page: Create a Toolchain to Deploy a Kubernetes App">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Setup and Pre-requisites","level":"1.2","depth":1,"next":{"title":"Create a Toolchain to Deploy a Kubernetes App","level":"1.3","depth":1,"path":"Lab1/README.md","ref":"Lab1/README.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Lab0/README.md","mtime":"2020-01-28T09:01:50.156Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-28T09:13:16.853Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
